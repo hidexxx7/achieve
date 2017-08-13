@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  resources :users, only: [:index, :show] 
+  resources :relationships, only: [:create, :destroy]
+
   root 'top#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

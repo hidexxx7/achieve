@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+
+    <h3>ユーザー詳細</h3><br><br>
+    <p>ユーザー名：<%= @user.name %></p>
+    <p><%= profile_img(@user) %></p>
+    <p>Eメール：<%= @user.email %></p>
+    <%= link_to 'ユーザー一覧に戻る', users_path %><br><br>
+
+    <h4>フォロー一覧</h4>
+    <table class="table table-bordered">
+      <tr class="info"><th>ユーザー名</th><th>ユーザー画像</th><th>Eメール</th></tr>
+      <% @user.followed_users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= profile_img(user) %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <h4>フォロワー一覧</h4>
+    <table class="table table-bordered">
+      <tr class="info"><th>ユーザー名</th><th>ユーザー画像</th><th>Eメール</th></tr>
+      <% @user.followers.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= profile_img(user) %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </table>
+
+  </div>
+</div>
