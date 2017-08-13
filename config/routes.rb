@@ -12,10 +12,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
-    collection do
-      post :confirm
-    end
+  resources :blogs do
+    resources :comments
+    post :confirm, on: :collection
   end
 
   resources :poems, only: [:index, :show] #この行を追記する
