@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+        <h2>お知らせ</h2>
+      </thead>
+      <tbody>
+        <% @notifications.each do |notification| %>
+          <tr>
+            <td>
+              <!--<p><%= notificationread = notification.read == false ? '未読' : '既読' %></p>-->
+              <p><%= read_status(notification.read)%>  <%= posted_time(notification.created_at) %></p>
+              <p><%= notification.comment.user.try(:name) %>さんが
+              あなたのブログ(<%= link_to "#{notification.comment.blog.title}", blog_path(notification.comment.blog, notification_id: notification.id) %>)
+              にコメントしました。</p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
