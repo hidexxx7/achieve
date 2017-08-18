@@ -10,8 +10,8 @@
   <% if user_signed_in? %>
     <script>
       var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
-        encrypted: true
         cluster: 'ap1',
+        encrypted: true
       });
 
       var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
